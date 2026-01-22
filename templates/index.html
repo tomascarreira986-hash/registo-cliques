@@ -2,24 +2,30 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Registo de Cliques</title>
+    <title>Atividades da Escola</title>
     <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-    <h1>Registo de Cliques</h1>
+    <div class="container">
+        <h1>Registo de Atividades</h1>
+        <p class="subtitulo">
+            Clique na atividade realizada para registar a participação
+        </p>
 
-    <div class="botoes">
-        <button onclick="registarClique('Botão 1')">Botão 1</button>
-        <button onclick="registarClique('Botão 2')">Botão 2</button>
-        <button onclick="registarClique('Botão 3')">Botão 3</button>
-        <button onclick="registarClique('Botão 4')">Botão 4</button>
-    </div>
+        <div class="botoes">
+            <button onclick="registarClique('Ler Livros')">📚 Ler Livros</button>
+            <button onclick="registarClique('Xadrez')">♟️ Xadrez</button>
+            <button onclick="registarClique('Computadores')">💻 Computadores</button>
+            <button onclick="registarClique('Outros')">🎯 Outros</button>
+        </div>
 
-    <div id="resultado">
-        <p><strong>Número:</strong> -</p>
-        <p><strong>Data:</strong> -</p>
-        <p><strong>Hora:</strong> -</p>
+        <div id="resultado" class="resultado">
+            <p><strong>Número do registo:</strong> -</p>
+            <p><strong>Data:</strong> -</p>
+            <p><strong>Hora:</strong> -</p>
+        </div>
     </div>
 
     <script src="/static/script.js"></script>
