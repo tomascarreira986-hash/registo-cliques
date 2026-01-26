@@ -2,17 +2,17 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Atividades da Escola</title>
+    <title>Registo de Atividades</title>
     <link rel="stylesheet" href="/static/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
+<div class="layout">
+
     <div class="container">
         <h1>Registo de Atividades</h1>
-        <p class="subtitulo">
-            Clique na atividade realizada para registar a participação
-        </p>
+        <p class="subtitulo">Selecione a atividade realizada</p>
 
         <div class="botoes">
             <button onclick="registarClique('Ler Livros')">📚 Ler Livros</button>
@@ -22,12 +22,20 @@
         </div>
 
         <div id="resultado" class="resultado">
-            <p><strong>Número do registo:</strong> -</p>
+            <p><strong>Número do clique:</strong> -</p>
             <p><strong>Data:</strong> -</p>
             <p><strong>Hora:</strong> -</p>
         </div>
     </div>
 
-    <script src="/static/script.js"></script>
+    <div class="sidebar">
+        <h2>Cliques por Dia</h2>
+        <ul id="listaDias"></ul>
+    </div>
+
+</div>
+
+<script src="/static/script.js"></script>
 </body>
 </html>
+
