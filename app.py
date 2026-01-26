@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, Response
 import sqlite3
 from datetime import datetime
 
@@ -35,6 +35,7 @@ def index():
 @app.route("/click/<botao>")
 def click(botao):
     conn = get_db_connection()
+
     hoje = datetime.now().strftime("%Y-%m-%d")
     hora = datetime.now().strftime("%H:%M")
 
@@ -59,10 +60,7 @@ def click(botao):
 
     conn.close()
 
-    lista_dias = [
-        {"data": d["data"], "total": d["total"]}
-        for d in dias
-    ]
+    lista_dias = [{"data": d["data"], "total": d["total"]} for d in dias]
 
     return jsonify({
         "numero": numero,
@@ -70,6 +68,38 @@ def click(botao):
         "hora": hora,
         "dias": lista_dias
     })
+
+
+@app.route("/download")
+def download():
+    conn = get_db_connection()
+
+    registos = conn.execute("""
+        SELECT data, hora, botao, numero
+        FROM cliques
+        ORDER BY data, numero
+    """).fetchall()
+
+    conn.close()
+
+    texto = "RELATÓRIO DE CLIQUES\n"
+    texto += "=====================\n\n"
+
+    data_atual = ""
+
+    for r in registos:
+        if r["data"] != data_atual:
+            data_atual = r["data"]
+            texto += f"\nData: {data_atual}\n"
+            texto += "-" * 30 + "\n"
+
+        texto += f"Nº {r['numero']} | Hora: {r['hora']} | Atividade: {r['botao']}\n"
+
+    return Response(
+        texto,
+        mimetype="text/plain",
+        headers={"Content-Disposition": "attachment;filename=relatorio_cliques.txt"}
+    )
 
 
 if __name__ == "__main__":
