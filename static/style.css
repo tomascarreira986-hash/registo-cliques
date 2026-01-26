@@ -65,5 +65,44 @@ button:hover {
 @media (max-width: 500px) {
     .botoes {
         grid-template-columns: 1fr;
+}
+.layout {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+    color: #0d47a1;
+    margin-bottom: 15px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    background-color: #f1f8ff;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+@media (max-width: 900px) {
+    .layout {
+        flex-direction: column;
+        align-items: center;
     }
 }
+
